@@ -1,0 +1,20 @@
+@each $k,$v in $colors
+  .#{$k}
+    color: $v!important
+    &.darken
+      color: darken( $v, 10% )!important
+    &.lighten
+      color: lighten( $v, 10% )!important
+  .bg-#{$k}
+    background-color: $v!important
+    &.darken
+      background-color: darken( $v, 4% )!important
+    &.lighten
+      background-color: lighten( $v, 4% )!important
+      
+.bg-none
+    background: none!important
+.bg-cover
+    background-size: cover!important
+    background-position: center center!important
+    background-color: #ccc!important

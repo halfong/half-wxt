@@ -1,0 +1,114 @@
+@import './brush/normalize.min.css';
+
+$colors: (
+  white: #fff,
+  silver: #f4f4f4,
+  gray: #777,
+  black: #1d1d1d,
+
+  primary: #0FBA46,
+  info: #38B833,
+  success: #38B833,
+  warning: #FFA90F,
+  danger: #FF1300
+);
+
+$texts: (
+  1: 32px,
+  2: 24px,
+  3: 20px,
+  4: 16px,
+  5: 12px,
+  6: 10px,
+);
+
+$sizes: (
+  24: 24px,
+  32: 32px,
+  44: 44px,
+  54: 54px,
+  64: 64px,
+  100: 100px,
+  320: 320px,
+);
+
+$spacings: (
+  0: 0,
+  1: .4em,
+  5: 5px,
+  10: 10px,
+  20: 20px,
+  30: 30px,
+  50: 50px,
+);
+
+$round: (
+  6px,
+);
+
+//用于layout.section
+$landscape-width: 1280px;
+$portrait-padding: 4vw;
+
+@import './brush/src/Layout';
+@import './brush/src/Size';
+@import './brush/src/Color';
+@import './brush/src/Alignment';
+@import './brush/src/Spacing';
+@import './brush/src/Effect';
+@import './brush/src/Text';
+@import './brush/iconfont.scss';
+
+
+body{
+  background: #1d1d1d
+}
+.section{
+  max-width: $landscape-width;
+  margin: 0 auto;
+  padding: 0 $portrait-padding;
+}
+img{
+  width: 100%;
+}
+.recording-dot{
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: #FF1300;
+  @extend .bg-danger;
+  border-radius: 6px;
+  animation: blink 1s infinite;
+  -webkit-animation: blink 1s infinite;
+}
+@keyframes blink{
+  0% {
+    background-color: #FF1300;
+  }
+  60% {
+    background-color: #FF1300;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.glossy{
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  background: rgba(#1d1d1d, .85);
+}
+
+
+//hover 效果
+
+.hover-box{
+  cursor: pointer;
+}
+.hover-box:hover {
+  opacity: .9;
+}
+
+.bg-black-opacity{
+  background-color: rgba(#1d1d1d, .3);
+}

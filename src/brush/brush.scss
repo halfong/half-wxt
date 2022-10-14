@@ -1,0 +1,57 @@
+@import 'normalize.min';
+
+$colors: (
+  white: #fff,
+  silver: #f4f4f4,
+  gray: #aaa,
+  black: #1b1b1b,
+
+  primary: #38B833,
+  info: #38B833,
+  success: #38B833,
+  warning: #FFA90F,
+  danger: #EE4411
+);
+
+$texts: (
+  1: 2.6rem,
+  2: 1.6rem,
+  3: 1.1rem,
+  4: 1rem,
+  5: .9rem,
+  6: .8rem,
+  7: .6rem
+);
+
+$sizes: (
+  24: 24px,
+  36: 36px,
+  44: 44px,
+  54: 54px,
+  64: 64px
+);
+
+$spacings: (
+  0: 0rem,
+  1: .25rem,
+  2: .5rem,
+  3: 1rem,
+  4: 2rem,
+  5: 4rem
+);
+
+$round: (
+  16px,
+);
+
+//用于layout.section
+$landscape-width: 960px;
+$portrait-padding: 4vw;
+
+@import 'src/Layout';
+@import 'src/Size';
+@import 'src/Color';
+@import 'src/Alignment';
+@import 'src/Spacing';
+@import 'src/Effect';
+@import 'src/Text';

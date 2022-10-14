@@ -1,0 +1,12 @@
+@each $k,$v in $sizes
+  .w#{$k}
+    width: $v!important
+  .h#{$k}
+    height: $v!important
+    &.round-full
+      border-radius: $v/2!important
+  .wh#{$k}
+    width: $v!important
+    height: $v!important
+    &.round-full
+      border-radius: $v/2!important
