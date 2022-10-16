@@ -13,7 +13,7 @@ export default function Header({ id }){
         { id && 
           <div className="flex-1 h64 right">
             <div className="inline h32 bg-black darken pl10 pr30 round-full" style={{'marginTop':16}}>
-              <p className="t5 primary mr th32 bold serif"><span className="t5 th32 gray">信箱</span> { id }</p>
+              <p className="t5 primary mr th32 bold serif"><span className="t5 th32 gray">站点</span> { id }</p>
               <span className="ab-tr recording-dot" style={{'top':10,'right':10}}></span>
             </div>
           </div>
