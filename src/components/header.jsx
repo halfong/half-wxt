@@ -1,4 +1,5 @@
 import wxtSvg from '../assets/wxt.svg'
+import wxtZhSvg from '../assets/wxt-zh.svg'
 
 export default function Header({ id }){
 
@@ -6,14 +7,15 @@ export default function Header({ id }){
     <div className="com-header-bar fix-t glossy">
       <div className="section h64 flex-row">
         <div className='flex-2'>
-          <img className='ab-tl h24' src={wxtSvg} alt="wxt-logo" style={{'top':'20px','width':'auto'}}/>
-          <span className="ab-tl icon icon-wxt-zh white ml1 t5 th64" style={{'left':'72px','top':'7px'}}/>
-          {/* <p className="ab-bl white t5 th7" style={{ 'bottom': -4,'width':'100%'}}>/ { id || '发消息给公众号获取地址' }</p> */}
+          <img className='ab-tl h24' src={wxtSvg} alt="微信投件logo" style={{'top':'20px'}}/>
+          <img className='ab-tl' src={wxtZhSvg} alt="微信投件" style={{'left':38,'top':22,'height':18}}/>
         </div>
         { id && 
           <div className="flex-1 h64 right">
-            <p className="t5 danger mr pr20 th64 bold">接收中</p>
-            <span className="ab-tr recording-dot" style={{'top':'26px'}}></span>
+            <div className="inline h32 bg-black darken pl10 pr30 round-full" style={{'marginTop':16}}>
+              <p className="t5 primary mr th32 bold serif"><span className="t5 th32 gray">信箱</span> { id }</p>
+              <span className="ab-tr recording-dot" style={{'top':10,'right':10}}></span>
+            </div>
           </div>
         }
       </div>

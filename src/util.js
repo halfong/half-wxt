@@ -99,6 +99,15 @@ const util = {
     }
     re.raw && re.raw.split('&').forEach( pair => re[pair.split('=')[0]] = pair.split('=')[1] )
     return re
+  },
+
+  makeID(){
+    const map = ['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9']
+    var id = ''
+    while( id.length < 5 ){
+      id += map[Math.round( Math.random()* (map.length - 1) )]
+    }
+    return id
   }
 
 }

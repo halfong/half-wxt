@@ -63,13 +63,11 @@ $portrait-padding: 4vw;
 body{
   background: #1d1d1d
 }
+
 .section{
   max-width: $landscape-width;
   margin: 0 auto;
   padding: 0 $portrait-padding;
-}
-img{
-  width: 100%;
 }
 .recording-dot{
   display: inline-block;
@@ -81,6 +79,11 @@ img{
   animation: blink 1s infinite;
   -webkit-animation: blink 1s infinite;
 }
+
+.serif{
+  font-family: serif;
+}
+
 @keyframes blink{
   0% {
     background-color: #FF1300;

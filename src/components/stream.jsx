@@ -10,24 +10,22 @@ export default function Stream({ id }){
     refreshInterval: 3000,
   })
 
-  if( error ) return <p className='py20 center t3 gray'>有点小问题 :(</p>
-  if( !data ) return <p className='py20 center t3 gray'>连接中..</p>
+  if( error ) return <p className='py20 center gray'>有点小问题 :(</p>
+  if( !data ) return null
 
-  return <div className="com-stream">
+  return <div className="com-stream flex-row">
     { data.map( _m => 
-      <div key={ _m.createdAt }>
-        <div className="inline w320">
+        <div className="inline px10 py10" style={{'width':'290px' }} key={ _m.createdAt }>
           {
             _m.type === 'image' ?
-            <img className="hover-box block" src={ _m.data } alt={ _m.createdAt }
+            <img className="hover-box block round" src={ _m.data } alt={ _m.createdAt }
               onClick={ ()=> window.open( _m.data, '_blank') }/>
-            : <p className="hover-box t4 px20 py50 left bg-white">{ _m.data }</p>
+            : <p className="t5 px20 py50 left round bg-white" dangerouslySetInnerHTML={ { __html : _m.data.replace(/\n/g,'<br/>') } }></p>
           }
-          <p className="ab-br inline px10 h24 center bg-black-opacity round-full" style={{ 'right':5,'bottom':5 }}>
+          <p className="ab-tl inline px10 h24 center bg-black-opacity" style={{ 'left':10, 'top':10 }}>
             <span className="white th24 t6">{ util.time.timeago( _m.createdAt ) }</span>
           </p>
         </div>
-      </div>
     )}
   </div>
 }

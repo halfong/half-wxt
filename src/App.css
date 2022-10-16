@@ -15,111 +15,16 @@
   }
 }
 /**
- * * 水平栅格: .cols > .col-[1~12], .col-[1~12]-mobile
- * */
-.cols {
-  display: flex;
-}
-.cols > * {
-  display: block;
-  flex-basis: 0;
-  flex-grow: 1;
-  flex-shrink: 1;
-  vertical-align: top;
-  flex: none;
-}
-.cols > .col-12 {
-  width: 100%;
-}
-.cols > .col-11 {
-  width: 91.66666667%;
-}
-.cols > .col-10 {
-  width: 83.33333333%;
-}
-.cols > .col-9 {
-  width: 75%;
-}
-.cols > .col-8 {
-  width: 66.66666667%;
-}
-.cols > .col-7 {
-  width: 58.33333333%;
-}
-.cols > .col-6 {
-  width: 50%;
-}
-.cols > .col-5 {
-  width: 41.66666667%;
-}
-.cols > .col-4 {
-  width: 33.33333333%;
-}
-.cols > .col-3 {
-  width: 25%;
-}
-.cols > .col-2 {
-  width: 16.66666667%;
-}
-.cols > .col-1 {
-  width: 8.33333333%;
-}
-
-@media screen and (orientation: portriat) {
-  > .col-12-mobile {
-    width: 100%;
-  }
-
-  > .col-11-mobile {
-    width: 91.66666667%;
-  }
-
-  > .col-10-mobile {
-    width: 83.33333333%;
-  }
-
-  > .col-9-mobile {
-    width: 75%;
-  }
-
-  > .col-8-mobile {
-    width: 66.66666667%;
-  }
-
-  > .col-7-mobile {
-    width: 58.33333333%;
-  }
-
-  > .col-6-mobile {
-    width: 50%;
-  }
-
-  > .col-5-mobile {
-    width: 41.66666667%;
-  }
-
-  > .col-4-mobile {
-    width: 33.33333333%;
-  }
-
-  > .col-3-mobile {
-    width: 25%;
-  }
-
-  > .col-2-mobile {
-    width: 16.66666667%;
-  }
-
-  > .col-1-mobile {
-    width: 8.33333333%;
-  }
-}
-/**
  * * 水平栅格（不固定子数量）: .flex-row> .flex-[1,2,3,5], .flex-[1,2,3,5]-mobile
  * */
 .flex-row {
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   display: flex;
+}
+.flex-row.center {
+  justify-content: center;
 }
 .flex-row > .flex-1 {
   flex: 1;
@@ -1052,6 +957,7 @@ h1, h2, h3, h4, h5, h6, p, i, a, span {
   vertical-align: top;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  word-break: break-all;
 }
 h1.icon, h2.icon, h3.icon, h4.icon, h5.icon, h6.icon, p.icon, i.icon, a.icon, span.icon {
   font-family: "iconfont" !important;
@@ -1214,10 +1120,6 @@ body {
   padding: 0 4vw;
 }
 
-img {
-  width: 100%;
-}
-
 .recording-dot {
   display: inline-block;
   width: 12px;
@@ -1226,6 +1128,10 @@ img {
   border-radius: 6px;
   animation: blink 1s infinite;
   -webkit-animation: blink 1s infinite;
+}
+
+.serif {
+  font-family: serif;
 }
 
 @keyframes blink {
