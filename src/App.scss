@@ -4,7 +4,8 @@ $colors: (
   white: #fff,
   silver: #f4f4f4,
   gray: #777,
-  black: #1d1d1d,
+  ink: #555,
+  black: #1b1b1b,
 
   primary: #0FBA46,
   info: #38B833,
@@ -97,8 +98,8 @@ body{
 }
 
 .glossy{
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   background: rgba(#1d1d1d, .85);
 }
 
@@ -106,12 +107,29 @@ body{
 //hover 效果
 
 .hover-box{
+  transition: 100ms ease-in;
   cursor: pointer;
 }
 .hover-box:hover {
-  opacity: .9;
+  transform: scale(.98);
+  opacity: .8;
 }
 
 .bg-black-opacity{
   background-color: rgba(#1d1d1d, .3);
+}
+
+.bounce-in{
+  animation: bounce-in 600ms ease;
+}
+    
+@keyframes bounce-in{
+  0%{
+    opacity: 0;
+    transform: scale(.3);
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1);
+  }
 }

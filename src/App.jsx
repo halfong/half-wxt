@@ -1,44 +1,47 @@
-import './App.css';
+import { Component } from 'react';
 import util from './util';
 import Stream from './components/stream';
 import Header from './components/header';
-import Intro from './components/intro';
-import HalfMark from './components/half-mark';
 
-const rebuild = ()=> window.location.href = `?${ util.makeID() }`
+import './App.css';
+import Foot from './components/Foot';
 
-// id = 'oeTHWjsl2Mv59weeRlstdZ5gcHN0'
-function App() {
-  var id = util.queryParams.raw
-  if( !id || !id.match(/^\w{5}$/) ){
-    id = null
-    window.setTimeout( rebuild , 1000 )
-  }else{
-    id = id.toUpperCase()
+export default class App extends Component{
+
+  state = {
+    no : null
   }
 
-  return (
-    <div style={{ padding:'2vw' }}>
+  componentDidMount(){
+    var id = util.queryParams.raw
+    if( !id || !id.match(/^\w{5}$/) ) return this.buildNo()
+    this.setState({ id: id.toUpperCase() })
+  }
 
-      <Header id={ id }/>
+  buildNo(){
+    window.setTimeout( () => window.location.href = `?${ util.makeID() }`, 1000 )
+  }
 
-      { !id && <p className="center gray py50">正在创建地址..</p> }
+  render() {
+  
+    const { id } = this.state
 
-      { id &&
-        <div>
-          <div className="center mt10 section">
-            <Stream id={ id } />
-          </div>
-          <div className="mt50 pb50">
-            <Intro id={ id } />
-          </div>
+    return (
+      <div>
+  
+        <Header id={ id }/>
+  
+        { !id && <p className="center gray py50">正在创建站点..</p> }
+  
+        <div className="section center mt30 pb50" style={{'minHeight':'90vh'}}>
+          { id && <Stream id={ id } /> }
         </div>
-      }
 
-      <HalfMark />
-      
-    </div>
-  );
+        <Foot id={id} />
+        {/* <HalfMark /> */}
+        
+      </div>
+    );
+  }
+
 }
-
-export default App;

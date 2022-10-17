@@ -12,9 +12,9 @@ export default function Header({ id }){
         </div>
         { id && 
           <div className="flex-1 h64 right">
-            <div className="inline h32 bg-black darken pl10 pr30 round-full" style={{'marginTop':16}}>
-              <p className="t5 primary mr th32 bold serif"><span className="t5 th32 gray">站点</span> { id }</p>
-              <span className="ab-tr recording-dot" style={{'top':10,'right':10}}></span>
+            <div className="inline h44 bg-black darken pl20 pr30 round-full" style={{'marginTop':10}}>
+              <p className="mr t5 th44 gray">站点  <span className="ml th44 primary serif bold">{ id }</span></p>
+              <span className="ab-tr recording-dot" style={{'top':16,'right':14}}></span>
             </div>
           </div>
         }

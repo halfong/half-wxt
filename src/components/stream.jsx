@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import util from "../util";
+import Intro from "./intro";
 
 const getData = id => fetch(`https://hal-f.cn/api/wxt/${id}`).then(res => res.json())
 
@@ -10,22 +11,29 @@ export default function Stream({ id }){
     refreshInterval: 3000,
   })
 
-  if( error ) return <p className='py20 center gray'>有点小问题 :(</p>
-  if( !data ) return null
-
-  return <div className="com-stream flex-row">
-    { data.map( _m => 
-        <div className="inline px10 py10" style={{'width':'290px' }} key={ _m.createdAt }>
+  return <div className="com-stream flex-row" style={{'margin':'0 -15px'}}>
+    { error && <p className='py15 center gray'>有点小问题 :(</p> }
+    { data && data.map( _m => 
+        <div className="px20 py10 col-2 inline" key={ _m.createdAt }>
           {
             _m.type === 'image' ?
-            <img className="hover-box block round" src={ _m.data } alt={ _m.createdAt }
-              onClick={ ()=> window.open( _m.data, '_blank') }/>
-            : <p className="t5 px20 py50 left round bg-white" dangerouslySetInnerHTML={ { __html : _m.data.replace(/\n/g,'<br/>') } }></p>
+            <a href={ _m.data } target="__blank">
+              <img className="hover-box block bounce-in" src={ _m.data } alt={ _m.createdAt } />
+              <p className="ink th24 t6 bold right">{ util.time.timeago( _m.createdAt ) }</p>
+            </a>
+            :
+            <div>
+              <p className="px20 py50 left bg-white t5 bounce-in" dangerouslySetInnerHTML={ { __html : _m.data.replace(/\n/g,'<br/>') } }></p>
+              <p className="ink th24 t6 bold right">{ util.time.timeago( _m.createdAt ) }</p>
+            </div>
+              
           }
-          <p className="ab-tl inline px10 h24 center bg-black-opacity" style={{ 'left':10, 'top':10 }}>
-            <span className="white th24 t6">{ util.time.timeago( _m.createdAt ) }</span>
-          </p>
         </div>
     )}
+    { (!data || data.length === 0) &&
+      <div className="mt50 pb50 col-12">
+        <Intro id={ id } />
+      </div>
+    }
   </div>
 }
