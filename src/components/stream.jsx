@@ -2,7 +2,7 @@ import useSWR from "swr";
 import util from "../util";
 import Intro from "./intro";
 
-const getData = id => fetch(`https://hal-f.cn/api/wxt/${id}`).then(res => res.json())
+const getData = id => fetch(`https://bjlx.top/half/api/wxt/${id}`).then(res => res.json())
 
 export default function Stream({ id }){
 
