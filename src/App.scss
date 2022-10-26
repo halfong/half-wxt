@@ -3,8 +3,8 @@
 $colors: (
   white: #fff,
   silver: #f4f4f4,
-  gray: #777,
-  ink: #555,
+  gray: #4a4a4a,
+  ink: #252525,
   black: #1b1b1b,
 
   primary: #0FBA46,
@@ -26,6 +26,7 @@ $texts: (
 $sizes: (
   24: 24px,
   32: 32px,
+  36: 36px,
   44: 44px,
   54: 54px,
   64: 64px,
@@ -38,17 +39,20 @@ $spacings: (
   1: .4em,
   5: 5px,
   10: 10px,
+  15: 15px,
   20: 20px,
   30: 30px,
   50: 50px,
+  80: 80px,
+  120: 120px,
 );
 
 $round: (
-  6px,
+  4px,
 );
 
 //用于layout.section
-$landscape-width: 1280px;
+$landscape-width: 960px;
 $portrait-padding: 4vw;
 
 @import './brush/src/Layout';
@@ -72,10 +76,8 @@ body{
 }
 .recording-dot{
   display: inline-block;
-  width: 12px;
-  height: 12px;
-  background-color: #FF1300;
-  @extend .bg-danger;
+  width: 8px;
+  height: 8px;
   border-radius: 6px;
   animation: blink 1s infinite;
   -webkit-animation: blink 1s infinite;
@@ -83,17 +85,21 @@ body{
 
 .serif{
   font-family: serif;
+  letter-spacing: .1em;
 }
 
 @keyframes blink{
   0% {
-    background-color: #FF1300;
+    opacity: 0;
   }
-  60% {
-    background-color: #FF1300;
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
   }
   100% {
-    background-color: transparent;
+    opacity: 0;
   }
 }
 
@@ -131,5 +137,42 @@ body{
   100%{
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+input{
+  background: none;
+  border: none;
+  border-bottom: 1px #555 solid;
+  width: 100%;
+  padding: .4em 0;
+  color: #fff;
+  outline: none;
+}
+
+button{
+  border: none;
+  cursor: pointer;
+  &:active{
+    @extend .darken
+  }
+}
+a,.link{
+  border: none;
+  cursor: pointer;
+  &:active{
+    opacity: .6;
+  }
+}
+
+@media only screen and (max-width: 720px){
+  .m-hide{
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 720px){
+  .d-hide{
+    display: none;
   }
 }

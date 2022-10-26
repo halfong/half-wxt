@@ -4,7 +4,8 @@ import Stream from './components/stream';
 import Header from './components/header';
 
 import './App.css';
-import Foot from './components/Foot';
+import Foot from './components/foot';
+import LoginPanel from './components/login-panel';
 
 export default class App extends Component{
 
@@ -13,33 +14,42 @@ export default class App extends Component{
   }
 
   componentDidMount(){
-    var id = util.queryParams.raw
-    if( !id || !id.match(/^\w{5}$/) ) return this.buildNo()
-    this.setState({ id: id.toUpperCase() })
+    var no = util.queryParams.raw
+    if( !util.checkNo( no ) ) this.setState({ no: false })
+    else{
+      this.setState({ no: no.toUpperCase() })
+      util.visit( no )
+    }
   }
 
-  buildNo(){
-    window.setTimeout( () => window.location.href = `?${ util.makeID() }`, 1000 )
-  }
+  // buildNo(){
+  //   window.setTimeout( () => window.location.href = `?${ util.makeNo() }`, 1000 )
+  // }
 
   render() {
   
-    const { id } = this.state
+    const { no } = this.state
 
     return (
       <div>
   
-        <Header id={ id }/>
-  
-        { !id && <p className="center gray py50">正在创建站点..</p> }
-  
-        <div className="section center mt30 pb50" style={{'minHeight':'90vh'}}>
-          { id && <Stream id={ id } /> }
-        </div>
+        <Header no={ no }/>
 
-        <Foot id={id} />
-        {/* <HalfMark /> */}
-        
+        { no === false &&
+          <div className="section center" style={{'paddingTop':'12vh'}}>
+            <LoginPanel />
+          </div>
+        }
+  
+        { no &&
+          <div className="section center mt30 pb50">
+            <Stream no={ no } />
+          </div>
+        }
+
+        <div className="section mt120">
+          <Foot />
+        </div>
       </div>
     );
   }

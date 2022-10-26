@@ -101,15 +101,31 @@ const util = {
     return re
   },
 
-  makeID(){
+  makeNo(){
     const map = ['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9']
     var id = ''
     while( id.length < 5 ){
       id += map[Math.round( Math.random()* (map.length - 1) )]
     }
     return id
-  }
+  },
 
+  checkNo( str ){
+    console.log( str )
+    return str && str.match(/^\w{5}$/)
+  },
+
+  //访问过的no
+  visit( no = null ){
+    var data = JSON.parse( window.localStorage.getItem('visits') || '[]' )
+    if( no ){
+      if( data.indexOf( no ) > - 1 ) data.splice( data.indexOf( no ), 1 )
+      data.unshift( no )
+      data = data.slice(0,3)
+      window.localStorage.setItem('visits', JSON.stringify( data ) )
+    }
+    return data
+  }
 }
 
 export default util
