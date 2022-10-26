@@ -1,6 +1,6 @@
 import halfImg from '../assets/half.png'
 
-export default function foot({ id }){
+export default function Foot({ id }){
 
   return <footer className='darken py30' style={{'borderTop':'1px #151515 solid'}}>
       <a href='https://hal-f.cn' target='__blank' className="block center">
