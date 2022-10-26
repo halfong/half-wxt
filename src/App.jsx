@@ -4,8 +4,8 @@ import Stream from './components/stream';
 import Header from './components/header';
 
 import './App.css';
-import Foot from './components/foot';
 import LoginPanel from './components/login-panel';
+import Footer from './components/footer';
 
 export default class App extends Component{
 
@@ -48,7 +48,7 @@ export default class App extends Component{
         }
 
         <div className="section mt120">
-          <Foot />
+          <Footer />
         </div>
       </div>
     );
